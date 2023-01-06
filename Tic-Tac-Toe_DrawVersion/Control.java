@@ -7,6 +7,7 @@ public class Control extends JFrame implements MouseListener {
     public static View view_control = new View();
 
     static String current_player = "x";
+    static int mode =0;
     static int count;
   
     public static void main(String[] args) {
@@ -15,9 +16,12 @@ public class Control extends JFrame implements MouseListener {
             @Override
             public void actionPerformed(ActionEvent e){
                 if(model_control.CheckSizeInput(view_control.size_input_txtfield.getText())){
-                        view_control.CreateGameScreen(Integer.parseInt(view_control.size_input_txtfield.getText()));  
-                        view_control.size_input_frame.dispose();
-                        view_control.DrawTable();
+                    if(mode == 0){
+                        view_control.AddListener();
+                    }
+                    view_control.CreateGameScreen(Integer.parseInt(view_control.size_input_txtfield.getText()));  
+                    view_control.size_input_frame.dispose();
+                    view_control.DrawTable();
                 }else{
                     JOptionPane.showMessageDialog(null, "Please enter number", null, JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -39,6 +43,7 @@ public class Control extends JFrame implements MouseListener {
             public void actionPerformed(ActionEvent e){
                 count = 0;
                 current_player = "x";
+                mode +=1;
                 view_control.CreateSizeInputScreen();
                 view_control.dispose();
             }
@@ -87,8 +92,11 @@ public class Control extends JFrame implements MouseListener {
                 System.exit(0);
             }
         });
-    }            
+    }      
 
+    public void AddListener(){
+        view_control.xo_table_panel.addMouseListener(this);
+    }
 
     public void ChangeCurrentPlayer(){
         if (this.current_player.equals("x")){

@@ -78,7 +78,6 @@ public class View extends Control{
         this.setTitle("Tic-Tac-Toe Game");
 
         xo_table_panel.setPreferredSize(new Dimension(table_panel_size, table_panel_size));
-        xo_table_panel.addMouseListener(this);
         
         empty_panel.add(xo_table_panel);
         xo_table_panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
