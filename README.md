@@ -1,2 +1,2 @@
-# Currency-Covert-Program
+# Tic-Tac-Toe Game
 JavaProgram
